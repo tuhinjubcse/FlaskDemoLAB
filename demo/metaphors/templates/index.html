@@ -3,90 +3,124 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Enthymeme Generation</title>
+    <title>Metaphor Generation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400&family=Poppins:wght@500&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
     <style>
         body {
-            background-image: url("background.png");
+            background-image: url('../static/background.png');
             background-size: cover;
         }
+
         .center_div {
             margin: 0 auto;
             width: 50%
                 /* value of your choice which suits your alignment */
         }
+
         h1 {
             font-family: 'Poppins', sans-serif;
         }
-        label, input, p, button {
+
+        label,
+        input,
+        p,
+        button {
             font-family: 'Barlow', sans-serif;
         }
+
+        #sticky-footer {
+            flex-shrink: none;
+        }
+
+       
     </style>
 </head>
 
 <body>
-    <form action = "{{ url_for('home') }}" class="center_div" method="POST">
-      <br>
+    <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
+        <br>
         <h1>Metaphor Generator</h1> <br>
 
         <label for="enthinput">Input</label>
-        <textarea name="enthinput" class="form-control" id="enthinput" rows="3"></textarea>
+        <textarea name="enthinput" class="form-control" placeholder="{{input}}" id="enthinput" rows="3"></textarea>
         <br>
-        
-        
+        <button type="submit" class="btn btn-info" style="{{show_domains}}">Show Domains</button> <br>
+    </form>
+
+    <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
+
         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label for="modelselector">Source Domain</label>
-                <select name="modelselector" id="modelselector" class="form-control">
-                    <option selected>Open this select menu</option>
-                    <option>a</option>
-                    <option>b</option>
-                    <option>c</option>
-                    <option>d</option>
-                    <option>e</option>
-                    <option>f</option>
-                    <option>g</option>
-                    <option>h</option>
-                    <option>i</option>
-                    <option>j</option>
-                    <option>k</option>
-                    <option>l</option>
-                    <option>m</option>
-                    <option>n</option>
-                    <option>o</option>
-                    <option>p</option>
-                    <option>q</option>
-                    <option>r</option>
-                    <option>s</option>
-                    <option>t</option>
-                    <option>u</option>
-                    <option>v</option>
-                    <option>w</option>
-                    <option>x</option>
-                    <option>y</option>
-                    <option>z</option>
-                    <!--<option>BART + ParaCOMET1</option>
-                    <option>BART + ParaCOMET2</option>-->
-                </select><br>
+            <div class="input-group-prepend" style="{{dropdown_show}}">
+
+                <div style="{{target_selection_show}}">
+                    <p>Selected TARGET domain: {{target_domain_selection}} </p>
+                </div>
+                <!--<label for="modelselector">Select the TARGET domain</label>-->
+                <div style="dropdown_showtime">
+                <select name="modelselector" id="modelselector" class="form-control" >
+                    <option selected>Select the TARGET domain</option>
+                    {% for i in options%}
+                    <option>{{i}}</option>
+                    {% endfor %}
+
+
+                </select></div><br>
             </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="form-control" placeholder="Target Domain" aria-label="Username" >
-          </div>
-          
-        <button type="submit" class="btn btn-info">Generate</button>
+            <!--<input type="text" class="form-control" placeholder="Select a source domain" aria-label="Username" style="display: none;">-->
+        </div>
+
+        <button type="submit" class="btn btn-info" style="{{continue_show}}">Continue</button>
+    </form>
+    <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
+
+            <div style="{{gen_button}}">
+              <p> Select a SOURCE domain:</p>
+              {% for i in possible_sources%}
+              <input type="radio" id="{{i}}" name="categories" value="{{i}}"> {{i}} </div>
+              {% endfor %}
+              <br><br>
+               
+            
+               
+              </div>
+
+        <button type="submit" class="btn btn-info" style="{{gen_button}}">Generate</button>
     </form>
     <br>
     <br>
     <br>
-    
+
     <p class="lead center_div">{{argument}}</p>
+    
+    
+
+
+
+
+
+
+
+
+
+        
+
+
+
+        <footer id="sticky-footer" class="py-4 text-black-50">
+            <div class="container text-center">
+                <small>Copyright &copy; Created by Aadit Trivedi & Tuhin Chakrabarty</small>
+            </div>
+        </footer>
 </body>
 
 </html>
