@@ -45,7 +45,7 @@ class FnFrames(object):
                 if word in self.verb_frame_dict:
                     res[c] = self.verb_frame_dict[word]
     
-        return res
+        return res, focus_word_index
 
     # Given a target domain, find all the source domains that align
     # By default returns top 3, but this can be changed: many may have only 3 or 4, making this not the best

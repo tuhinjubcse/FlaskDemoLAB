@@ -50,10 +50,12 @@
     <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
         <br>
         <h1>Metaphor Generator</h1> <br>
-
+<div style="{{input_show}}">
         <label for="enthinput">Input</label>
         <textarea name="enthinput" class="form-control" placeholder="{{input}}" id="enthinput" rows="3"></textarea>
         <br>
+    </div>
+    <p> {{first_el}} <mark><b>{{second_el}}</b></mark> {{third_el}}</p>
         <button type="submit" class="btn btn-info" style="{{show_domains}}">Show Domains</button> <br>
     </form>
 
@@ -75,7 +77,7 @@
                 </select></div><br>
             </div>
             <div style="{{target_selection_show}}">
-                <p>Selected TARGET domain: {{target_domain_selection}} </p>
+                <p>Selected TARGET domain: <mark><b>{{target_domain_selection}}</b></mark> </p>
             </div>
             <!--<input type="text" class="form-control" placeholder="Select a source domain" aria-label="Username" style="display: none;">-->
         </div>
