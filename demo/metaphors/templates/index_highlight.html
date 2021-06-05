@@ -41,8 +41,6 @@
         #sticky-footer {
             flex-shrink: none;
         }
-
-       
     </style>
 </head>
 
@@ -50,12 +48,12 @@
     <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
         <br>
         <h1>Metaphor Generator</h1> <br>
-<div style="{{input_show}}">
-        <label for="enthinput">Input</label>
-        <textarea name="enthinput" class="form-control" placeholder="{{input}}" id="enthinput" rows="3"></textarea>
-        <br>
-    </div>
-    <p> {{first_el}} <mark><b>{{second_el}}</b></mark> {{third_el}}</p>
+        <div style="{{input_show}}">
+            <label for="enthinput">Input</label>
+            <textarea name="enthinput" class="form-control" placeholder="{{input}}" id="enthinput" rows="3"></textarea>
+            <br>
+        </div>
+        <p> {{first_el}} <mark><b>{{second_el}}</b></mark> {{third_el}}</p>
         <button type="submit" class="btn btn-info" style="{{show_domains}}">Show Domains</button> <br>
     </form>
 
@@ -64,17 +62,18 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend" style="{{dropdown_show}}">
 
-                
+
                 <!--<label for="modelselector">Select the TARGET domain</label>-->
                 <div style="dropdown_showtime">
-                <select name="modelselector" id="modelselector" class="form-control" >
-                    <option selected>Select the TARGET domain</option>
-                    {% for i in options%}
-                    <option>{{i}}</option>
-                    {% endfor %}
+                    <select name="modelselector" id="modelselector" class="form-control">
+                        <option selected>Select the TARGET domain</option>
+                        {% for i in options%}
+                        <option>{{i}}</option>
+                        {% endfor %}
 
 
-                </select></div><br>
+                    </select>
+                </div><br>
             </div>
             <div style="{{target_selection_show}}">
                 <p>TARGET domain: <mark><b>{{target_domain_selection}}</b></mark> </p>
@@ -86,16 +85,17 @@
     </form>
     <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
 
-            <div style="{{gen_button}}">
-              <p> Select a SOURCE domain:</p>
-              {% for i in possible_sources%}
-              <input type="radio" id="{{i}}" name="categories" value="{{i}}"> {{i}} </div>
-              {% endfor %}
-              <br><br>
-               
-            
-               
-              </div>
+        <div style="{{gen_button}}">
+            <p> Select a SOURCE domain:</p>
+            {% for i in possible_sources%}
+            <input type="radio" id="{{i}}" name="categories" value="{{i}}"> {{i}}
+        </div>
+        {% endfor %}
+        <br><br>
+
+
+
+        </div>
 
         <button type="submit" class="btn btn-info" style="{{gen_button}}">Generate</button>
     </form>
@@ -104,8 +104,6 @@
     <br>
 
     <p class="lead center_div">{{argument}}</p>
-    
-    
 
 
 
@@ -115,15 +113,17 @@
 
 
 
-        
 
 
 
-        <footer id="sticky-footer" class="py-4 text-black-50">
-            <div class="container text-center">
-                <small>Copyright &copy; Created by Aadit Trivedi & Tuhin Chakrabarty</small>
-            </div>
-        </footer>
+
+
+
+    <footer id="sticky-footer" class="py-4 text-black-50">
+        <div class="container text-center">
+            <small>Copyright &copy; Created by Aadit Trivedi & Tuhin Chakrabarty</small>
+        </div>
+    </footer>
 </body>
 
 </html>
