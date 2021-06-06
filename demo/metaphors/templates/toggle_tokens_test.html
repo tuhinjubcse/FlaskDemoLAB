@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="form-group container">
+
+        <!-- radio group / required -->
+        <div class="card">
+            <div class="card-header">Example <strong>Radio Group</strong> I - Required</div>
+            <div class="card-body">
+                <label class="control-label">Is it true?</label>
+                <div class="btn-group btn-group-toggle form-control" data-toggle="buttons">
+                    <div class="btn active" role="button">
+                        <input type="radio" name="options" value="1" required="required">yes
+                    </div>
+                    <div class="btn" role="button">
+                        <input type="radio" name="options" value="0">no
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- radio group / not required -->
+        <div class="card">
+            <div class="card-header">Example <strong>Radio Group</strong> II - Not Required</div>
+            <div class="card-body">
+                <label class="control-label">Is it true?</label>
+                <div class="btn-group btn-group-toggle form-control" style="border:none;" data-toggle="buttons">
+                    <div class="btn active" role="button">
+                        <input type="radio" name="options" value="1">yes
+                    </div>
+                    <div class="btn" role="button">
+                        <input type="radio" name="options" value="0">no
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- radio group / required with different color -->
+        <div class="card">
+            <div class="card-header">Example <strong>Radio Group</strong> III - Required with Different Color(s)</div>
+            <div class="card-body">
+                <label class="control-label">Is it true?</label>
+                <div class="btn-group btn-group-toggle form-control" data-toggle="buttons">
+                    <div class="btn active" role="button">
+                        <input type="radio" name="options" value="1" required="required">yes
+                    </div>
+                    <div class="btn" role="button" data-twbs-toggle-buttons-class-active="btn-warning">
+                        <input type="radio" name="options" value="-1">maybe
+                    </div>
+                    <div class="btn" role="button" data-twbs-toggle-buttons-class-active="btn-danger">
+                        <input type="radio" name="options" value="0">no
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group container">
+
+        <!-- radio group / required -->
+        <div class="card">
+            <div class="card-header">Example <strong>Checkboxes</strong> I</div>
+            <div class="card-body">
+                <label class="control-label">Choose your documents!</label>
+                <div class="btn-group btn-group-toggle form-control" data-toggle="buttons">
+                    <div class="btn active" role="button">
+                        <input type="checkbox" name="options[]" value="1">Document 1
+                    </div>
+                    <div class="btn active" role="button">
+                        <input type="checkbox" name="options[]" value="2">Document 2
+                    </div>
+                    <div class="btn" role="button">
+                        <input type="checkbox" name="options[]" value="3">Document 3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="tether.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="jquery.twbs-toggle-buttons.min.js"></script>
+<script>
+    $(".btn-group-toggle").twbsToggleButtons();
+
+</script>
