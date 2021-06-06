@@ -8,4 +8,6 @@ Feature tested out in
 `app_highlight.py` and `templates/index_highlight.html`
 
 ## FINAL FINAL FINAL version (with highlighting and toggle tokens)
+- Credits to https://github.com/prokki/twbs-toggle-buttons on help with toggle tokens
+
 `app_final_tokens.py` and `templates/index_final_tokens.html`
