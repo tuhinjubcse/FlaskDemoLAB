@@ -8,38 +8,77 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400&family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
     <style>
         body {
-            background-image: url('../static/background.jpeg');
+            background-image: url('../static/background.png');
             background-size: cover;
         }
-        
+
         .center_div {
             margin: 0 auto;
             width: 50%
-            /* value of your choice which suits your alignment */
+                /* value of your choice which suits your alignment */
         }
-        
+
         h1 {
             font-family: 'Poppins', sans-serif;
         }
-        
+
         label,
         input,
         p,
         button {
             font-family: 'Barlow', sans-serif;
         }
-        
+
         #sticky-footer {
             flex-shrink: none;
+        }
+
+        .options-style {
+            max-width: fit-content;
+        }
+
+        /* w3schools tooltip tutorial code below */
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+            /* If you want dots under the hoverable text */
+        }
+
+        /* Tooltip text */
+        .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+        .popup:hover{
+            color:aqua;
         }
     </style>
 
@@ -78,8 +117,6 @@
             </div>
             <div style="{{target_selection_show}}">
                 <p>TARGET domain: <mark><b>{{target_domain_selection}}</b></mark> </p>
-		<p>TARGET Frame URL: <a href="{{target_domain_url}}">{{target_domain_url}}</a> </p>
-		<p>TARGET domain definition: <span style="color:blue">{{target_domain_definition}}</span> </p>
             </div>
             <!--<input type="text" class="form-control" placeholder="Select a source domain" aria-label="Username" style="display: none;">-->
         </div>
@@ -88,22 +125,7 @@
     </form>
     <form action="{{ url_for('show_domains') }}" class="center_div" method="POST">
 
-        <!--div style="{{gen_button}}">
-            <div class="card">
-                <label>Select a SOURCE domain</label>
-                <div class="btn-group btn-group-toggle form-control" data-toggle="buttons">
-                    {%for i in possible_sources%}
-                    <div class="btn active" role="button">
-                        <input type="radio" name="options" id="options" value="{{possible_sources.index(i)}}" required="required">{{i}}
-                    </div>
-                    {%endfor%}
-                </div>
-                <label for="other">Other</label>
-            <input type="text" class="form-control" id="other" placeholder="Other SOURCE domain..."><br>
-            </div>
-        </div--!>
-
-	<div style="{{gen_button}}">
+        <div style="{{gen_button}}">
             <div class="card" style="background-color:transparent; border:0;">
                 <label>Select a SOURCE domain</label>
 
@@ -111,8 +133,12 @@
                     <div class="options-style">
                         {%for i in possible_sources%}
                         <div class="btn active" role="button">
+                            
                             <input type="radio" name="options" id="options" value="{{possible_sources.index(i)}}"
-                                required="required">{{i}}
+                                required="required"><div class="tooltip">{{i}}
+                                <span class="tooltiptext">Tooltip text</span>
+                            </div>
+                                
 
                         </div>
 
@@ -120,8 +146,8 @@
                     </div>
 
                 </div>
-                <label for="other">Enter your custom SOURCE domain in uppercase ( If multiword join with underscore character) </label>
-                <input type="text" class="form-control" id="other" name="other" placeholder="Example cutsom SOURCE domain..."><br>
+                <label for="other">Other</label>
+                <input type="text" class="form-control" id="other" placeholder="Other SOURCE domain..."><br>
             </div>
         </div>
 
