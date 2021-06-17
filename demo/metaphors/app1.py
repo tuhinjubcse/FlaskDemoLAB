@@ -74,6 +74,8 @@ def show_domains():
                 first_el = first_el,
                 second_el = second_el,
                 third_el = third_el,
+                show_metaphor="display:none;",
+                show_selected_source_domain ="display:none;",
             )
         if counter == 1:
             try:
@@ -105,7 +107,8 @@ def show_domains():
                     first_el = first_el,
                     second_el = second_el,
                     third_el = third_el,
-                    show_metaphor="display:none;"
+                    show_metaphor="display:none;",
+                    show_selected_source_domain ="display:none;",
                 )
             except Exception:
                 counter = 0
@@ -134,6 +137,10 @@ def show_domains():
                 dropdown_show="display: none;",
                 continue_show="display: none;",
                 gen_button="display: none;",
+                target_domain_selection=target_domain,
+                target_domain_definition=definition,
+                show_selected_source_domain = "",
+                selected_source_domain = source_domain,
                 target_selection_show = "display: none;",
                 source_domain_show="display: none;",
                 possible_sources=[],
@@ -164,7 +171,8 @@ def show_domains():
         first_el = "",
         second_el = "",
         third_el = "",
-        show_metaphor="display:none;"
+        show_metaphor="display:none;",
+        show_selected_source_domain ="display:none;",
     )
 
 
