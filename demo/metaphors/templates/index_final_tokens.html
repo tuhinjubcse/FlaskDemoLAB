@@ -44,6 +44,30 @@
         #sticky-footer {
             flex-shrink: none;
         }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
     </style>
 
 </head>
@@ -97,19 +121,31 @@
             <div class="card" style="background-color:transparent; border:0;">
                 <label>Select a SOURCE domain</label>
 
+
                 <div class="btn-group btn-group-toggle form-control" data-toggle="buttons">
                     <div class="options-style">
                         {%for i in possible_sources%}
                         <div class="btn active" role="button">
                             <input type="radio" name="options" id="options" value="{{possible_sources.index(i)}}"
                                 required="required">{{i}}
-
                         </div>
 
                         {%endfor%}
                     </div>
 
+                    
+
+
                 </div>
+<br>
+                <b>Defintions</b>
+                <ul>
+                    {%for i in possible_sources%}
+                    <li> {{i}} - definition</li>
+                    
+
+                    {%endfor%}
+                </ul>
                 <label for="other">Enter your custom SOURCE domain in uppercase ( If multiword join with underscore
                     character) </label>
                 <input type="text" class="form-control" id="other" name="other"
